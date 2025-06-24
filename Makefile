@@ -1,2 +1,2 @@
 run:
-	dotnet run --project RASharp.csproj
+	dotnet run --project src/RASharp.csproj
