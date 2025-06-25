@@ -1,13 +1,20 @@
 ﻿namespace RASharp
 {
-    public partial class RASharp(string url) : IRetroAchievements
+    public partial class RASharp(string host, string token) : IRetroAchievements
     {
-        private readonly string _baseURL = url;
+        public const string RetroAchievementsHost = "https://retroachievements.org";
+        private readonly string _host = host;
+        private readonly string _token = token;
+        private readonly HttpClient _client = new()
+        {
+            BaseAddress = new Uri(host),
+        };
 
         public static void Main(string[] args)
         {
-            RASharp t = new("test");
-            t.GetProfile();
+            RASharp raClient = new("test", "some_secret");
+            raClient.GetProfile();
+            Console.WriteLine(raClient._token);
         }
     }
 }

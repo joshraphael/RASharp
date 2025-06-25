@@ -4,7 +4,7 @@ namespace RASharp
     {
         public void GetProfile()
         {
-            Console.WriteLine(this._baseURL);
+            Console.WriteLine(this._host);
         }
     }
 }
