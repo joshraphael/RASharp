@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="**\*Tests.cs" />
+    <ProjectReference Include="..\src\RASharp.csproj" />
   </ItemGroup>
 
 </Project>

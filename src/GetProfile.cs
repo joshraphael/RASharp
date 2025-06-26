@@ -1,10 +1,9 @@
-namespace RASharp
+namespace RASharp;
+
+public partial class RetroAchievements
 {
-    public partial class RASharp
+    public void GetProfile()
     {
-        public void GetProfile()
-        {
-            Console.WriteLine(this._host);
-        }
+        Console.WriteLine(this._host);
     }
 }

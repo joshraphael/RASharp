@@ -1,7 +1,6 @@
-namespace RASharp
+namespace RASharp;
+
+interface IRetroAchievements
 {
-    interface IRetroAchievements
-    {
-        void GetProfile();
-    }
+    void GetProfile();
 }
