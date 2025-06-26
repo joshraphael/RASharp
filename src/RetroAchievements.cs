@@ -9,6 +9,4 @@ public partial class RetroAchievements(string host, string token) : IRetroAchiev
     {
         BaseAddress = new Uri(host),
     };
-
-    public static void Main(string[] args) {}
 }
