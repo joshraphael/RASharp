@@ -4,14 +4,14 @@ public class Request
 {
     public string Host { get; set; }
     public string Path { get; set; }
-    public string Method { get; set; }
+    public HttpMethod Method { get; set; }
     public Dictionary<string, string> QueryParameters { get; set; }
     public Dictionary<string, string> Headers { get; set; }
     public Request()
     {
         this.Host = "";
         this.Path = "";
-        this.Method = "";
+        this.Method = HttpMethod.Get;
         this.QueryParameters = new Dictionary<string, string>();
         this.Headers = new Dictionary<string, string>();
     }
@@ -53,7 +53,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="method">The HTTP method verb</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder Method(string method)
+    public RequestBuilder Method(HttpMethod method)
     {
         _request.Method = method;
         return this;
@@ -104,13 +104,13 @@ public class RequestBuilder
     }
 
     /// <summary>
-    /// Adds a 'd' number to the query parameters.
+    /// Adds a 'd' string to the query parameters.
     /// </summary>
     /// <param name="value">The value of D</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder D(int value)
+    public RequestBuilder D(string value)
     {
-        return this.QueryParameter("d", value.ToString());
+        return this.QueryParameter("d", value);
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of F</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder F(int value)
+    public RequestBuilder F(long value)
     {
         return this.QueryParameter("f", value.ToString());
     }
@@ -170,7 +170,7 @@ public class RequestBuilder
     /// <returns>RequestBuilder</returns>
     public RequestBuilder M(int value)
     {
-        return this.QueryParameter("g", value.ToString());
+        return this.QueryParameter("m", value.ToString());
     }
 
     /// <summary>
