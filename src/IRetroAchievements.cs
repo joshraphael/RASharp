@@ -1,6 +1,8 @@
+using RASharp.Models;
+
 namespace RASharp;
 
 interface IRetroAchievements
 {
-    void GetProfile();
+    GetUserProfile? GetUserProfile();
 }
