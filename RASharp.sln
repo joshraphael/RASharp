@@ -4,6 +4,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\RASharp.Tests.csproj", "{5D58FF5B-0696-4258-A029-A8A8B160EF53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examples", "examples\RASharp.Examples.csproj", "{8ED7DF4C-F75A-4C14-A2BB-DB1A18C8209C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src", "src\RASharp.csproj", "{E38416AA-DC62-4D29-9609-1A8A27DF2063}"
 EndProject
 Global
@@ -23,5 +25,9 @@ Global
 		{E38416AA-DC62-4D29-9609-1A8A27DF2063}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E38416AA-DC62-4D29-9609-1A8A27DF2063}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E38416AA-DC62-4D29-9609-1A8A27DF2063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED7DF4C-F75A-4C14-A2BB-DB1A18C8209C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED7DF4C-F75A-4C14-A2BB-DB1A18C8209C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED7DF4C-F75A-4C14-A2BB-DB1A18C8209C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED7DF4C-F75A-4C14-A2BB-DB1A18C8209C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

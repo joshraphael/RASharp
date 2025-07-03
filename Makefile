@@ -1,5 +1,5 @@
 run:
-	dotnet run --project src/RASharp.csproj
+	dotnet run --project examples/RASharp.Examples.csproj
 
 test:
 	dotnet test

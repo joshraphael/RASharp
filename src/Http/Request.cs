@@ -1,29 +1,24 @@
+using System.Web;
+
 namespace RASharp.Http;
+
 
 public class Request
 {
-    public string Host { get; set; }
-    public string Path { get; set; }
-    public HttpMethod Method { get; set; }
-    public Dictionary<string, string> QueryParameters { get; set; }
-    public Dictionary<string, string> Headers { get; set; }
+    // private readonly Request _request;
+    public string _host;
+    public string _path;
+    public HttpMethod _method;
+    public Dictionary<string, string> _queryParameters = new Dictionary<string, string>();
+    public Dictionary<string, string> _headers = new Dictionary<string, string>();
+
     public Request()
     {
-        this.Host = "";
-        this.Path = "";
-        this.Method = HttpMethod.Get;
-        this.QueryParameters = new Dictionary<string, string>();
-        this.Headers = new Dictionary<string, string>();
-    }
-}
-
-public class RequestBuilder
-{
-    private readonly Request _request;
-
-    public RequestBuilder()
-    {
-        this._request = new Request();
+        this._host = "";
+        this._path = "";
+        this._method = HttpMethod.Get;
+        this._queryParameters = [];
+        this._headers = [];
     }
 
     /// <summary>
@@ -31,9 +26,9 @@ public class RequestBuilder
     /// </summary>
     /// <param name="host">The hostname</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder Host(string host)
+    public Request Host(string host)
     {
-        _request.Host = host;
+        this._host = host;
         return this;
     }
 
@@ -42,9 +37,9 @@ public class RequestBuilder
     /// </summary>
     /// <param name="path">The URL path</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder Path(string path)
+    public Request Path(string path)
     {
-        _request.Path = path;
+        this._path = path;
         return this;
     }
 
@@ -53,9 +48,9 @@ public class RequestBuilder
     /// </summary>
     /// <param name="method">The HTTP method verb</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder Method(HttpMethod method)
+    public Request HTTPMethod(HttpMethod method)
     {
-        _request.Method = method;
+        this._method = method;
         return this;
     }
 
@@ -65,9 +60,9 @@ public class RequestBuilder
     /// <param name="key">The query key</param>
     /// <param name="value">The query value</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder QueryParameter(string key, string value)
+    public Request QueryParameter(string key, string value)
     {
-        _request.QueryParameters[key] = value;
+        this._queryParameters[key] = value;
         return this;
     }
 
@@ -77,9 +72,9 @@ public class RequestBuilder
     /// <param name="key">The header key</param>
     /// <param name="value">The header value</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder Header(string key, string value)
+    public Request Header(string key, string value)
     {
-        _request.Headers[key] = value;
+        this._headers[key] = value;
         return this;
     }
 
@@ -88,7 +83,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of A</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder A(int value)
+    public Request A(int value)
     {
         return this.QueryParameter("a", value.ToString());
     }
@@ -98,7 +93,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of C</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder C(int value)
+    public Request C(int value)
     {
         return this.QueryParameter("c", value.ToString());
     }
@@ -108,7 +103,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of D</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder D(string value)
+    public Request D(string value)
     {
         return this.QueryParameter("d", value);
     }
@@ -118,7 +113,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of F</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder F(long value)
+    public Request F(long value)
     {
         return this.QueryParameter("f", value.ToString());
     }
@@ -128,7 +123,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of G</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder G(int value)
+    public Request G(int value)
     {
         return this.QueryParameter("g", value.ToString());
     }
@@ -138,7 +133,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of H</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder H(int value)
+    public Request H(int value)
     {
         return this.QueryParameter("h", value.ToString());
     }
@@ -148,7 +143,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="values">The values of I</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder I(string[] values)
+    public Request I(string[] values)
     {
         return this.QueryParameter("i", String.Join(",", values));
     }
@@ -158,7 +153,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="values">The values of K</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder K(string[] values)
+    public Request K(string[] values)
     {
         return this.QueryParameter("k", String.Join(",", values));
     }
@@ -168,7 +163,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of M</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder M(int value)
+    public Request M(int value)
     {
         return this.QueryParameter("m", value.ToString());
     }
@@ -178,7 +173,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of O</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder O(int value)
+    public Request O(int value)
     {
         return this.QueryParameter("o", value.ToString());
     }
@@ -188,7 +183,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of R</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder R(string value)
+    public Request R(string value)
     {
         return this.QueryParameter("r", value.ToString());
     }
@@ -198,7 +193,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of T</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder T(string value)
+    public Request T(string value)
     {
         return this.QueryParameter("t", value.ToString());
     }
@@ -208,7 +203,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of U</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder U(string value)
+    public Request U(string value)
     {
         return this.QueryParameter("u", value.ToString());
     }
@@ -218,7 +213,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The value of Y</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder Y(string value)
+    public Request Y(string value)
     {
         return this.QueryParameter("y", value.ToString());
     }
@@ -228,7 +223,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The Bearer Token</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder BearerToken(string token)
+    public Request BearerToken(string token)
     {
         return this.Header("Authorization", string.Format("Bearer {0}", token));
     }
@@ -238,7 +233,7 @@ public class RequestBuilder
     /// </summary>
     /// <param name="value">The Bearer Token</param>
     /// <returns>RequestBuilder</returns>
-    public RequestBuilder UserAgent(string userAgent)
+    public Request UserAgent(string userAgent)
     {
         return this.Header("User-Agent", userAgent);
     }
@@ -247,8 +242,21 @@ public class RequestBuilder
     /// Builds the HTTP request object.
     /// </summary>
     /// <returns>Request</returns>
-    public Request Build()
+    public HttpRequestMessage Build()
     {
-        return this._request;
+        UriBuilder uri = new UriBuilder(this._host);
+        uri.Path = this._path;
+        var query = HttpUtility.ParseQueryString(uri.Query);
+        foreach (var queryParam in this._queryParameters)
+        {
+            query[queryParam.Key] = queryParam.Value;
+        }
+        uri.Query = query.ToString();
+        HttpRequestMessage r = new ( this._method, uri.ToString() );
+        foreach (var header in this._headers)
+        {
+            r.Headers.Add(header.Key, header.Value);
+        }
+        return r;
     }
 }

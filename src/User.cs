@@ -1,15 +1,18 @@
+namespace RASharp;
+
 using RASharp.Http;
 using RASharp.Models;
 
-namespace RASharp;
-
 public partial class RetroAchievements
 {
-    public GetUserProfile? GetUserProfile()
+    public async Task<GetUserProfile?> GetUserProfile(string username)
     {
-        Request b = new RequestBuilder()
-        .Host(this._host)
-        .Build();
-        return null;
+        Request b = this._client.NewRequest()
+            .HTTPMethod(HttpMethod.Get)
+            .Path("/API/API_GetUserProfile.php")
+            .U(username);
+        var response = await this._client.Do<GetUserProfile>(b);
+        // Console.WriteLine(response.User);
+        return response;
     }
 }

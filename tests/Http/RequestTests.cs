@@ -16,10 +16,10 @@ public class RequestTests
         var seconds = dto.ToUnixTimeSeconds();
         DateTimeOffset laterDto = new DateTimeOffset(later);
         var laterSeconds = laterDto.ToUnixTimeSeconds();
-        Request request = new RequestBuilder()
+        Request request = new Request()
             .Host("http://localhost")
             .Path("/api/v1/some_resource")
-            .Method(HttpMethod.Post)
+            .HTTPMethod(HttpMethod.Post)
             .UserAgent("RASharp/v0.0.0")
             .BearerToken("secret_bearer")
             .A(1)
@@ -35,31 +35,30 @@ public class RequestTests
             .R("codenotes2")
             .T(laterSeconds.ToString())
             .U("myUsername")
-		    .Y("secret_token")
-            .Build();
+            .Y("secret_token");
         Assert.Multiple(() =>
         {
-            Assert.That(request.Host, Is.EqualTo("http://localhost"));
-            Assert.That(request.Path, Is.EqualTo("/api/v1/some_resource"));
-            Assert.That(request.Method, Is.EqualTo(HttpMethod.Post));
-            Assert.That(request.Headers, Has.Count.EqualTo(2));
-            Assert.That(request.Headers["User-Agent"], Is.EqualTo("RASharp/v0.0.0"));
-            Assert.That(request.Headers["Authorization"], Is.EqualTo("Bearer secret_bearer"));
-            Assert.That(request.QueryParameters, Has.Count.EqualTo(14));
-            Assert.That(request.QueryParameters["a"], Is.EqualTo("1"));
-            Assert.That(request.QueryParameters["c"], Is.EqualTo("20"));
-            Assert.That(request.QueryParameters["d"], Is.EqualTo("2024-03-02"));
-            Assert.That(request.QueryParameters["f"], Is.EqualTo("1709400423"));
-            Assert.That(request.QueryParameters["g"], Is.EqualTo("345"));
-            Assert.That(request.QueryParameters["h"], Is.EqualTo("1"));
-            Assert.That(request.QueryParameters["i"], Is.EqualTo("2837,4535"));
-            Assert.That(request.QueryParameters["k"], Is.EqualTo("test1,test2"));
-            Assert.That(request.QueryParameters["m"], Is.EqualTo("10"));
-            Assert.That(request.QueryParameters["o"], Is.EqualTo("34"));
-            Assert.That(request.QueryParameters["r"], Is.EqualTo("codenotes2"));
-            Assert.That(request.QueryParameters["t"], Is.EqualTo("1709401023"));
-            Assert.That(request.QueryParameters["u"], Is.EqualTo("myUsername"));
-            Assert.That(request.QueryParameters["y"], Is.EqualTo("secret_token"));
+            Assert.That(request._host, Is.EqualTo("http://localhost"));
+            Assert.That(request._path, Is.EqualTo("/api/v1/some_resource"));
+            Assert.That(request._method, Is.EqualTo(HttpMethod.Post));
+            Assert.That(request._headers, Has.Count.EqualTo(2));
+            Assert.That(request._headers["User-Agent"], Is.EqualTo("RASharp/v0.0.0"));
+            Assert.That(request._headers["Authorization"], Is.EqualTo("Bearer secret_bearer"));
+            Assert.That(request._queryParameters, Has.Count.EqualTo(14));
+            Assert.That(request._queryParameters["a"], Is.EqualTo("1"));
+            Assert.That(request._queryParameters["c"], Is.EqualTo("20"));
+            Assert.That(request._queryParameters["d"], Is.EqualTo("2024-03-02"));
+            Assert.That(request._queryParameters["f"], Is.EqualTo("1709400423"));
+            Assert.That(request._queryParameters["g"], Is.EqualTo("345"));
+            Assert.That(request._queryParameters["h"], Is.EqualTo("1"));
+            Assert.That(request._queryParameters["i"], Is.EqualTo("2837,4535"));
+            Assert.That(request._queryParameters["k"], Is.EqualTo("test1,test2"));
+            Assert.That(request._queryParameters["m"], Is.EqualTo("10"));
+            Assert.That(request._queryParameters["o"], Is.EqualTo("34"));
+            Assert.That(request._queryParameters["r"], Is.EqualTo("codenotes2"));
+            Assert.That(request._queryParameters["t"], Is.EqualTo("1709401023"));
+            Assert.That(request._queryParameters["u"], Is.EqualTo("myUsername"));
+            Assert.That(request._queryParameters["y"], Is.EqualTo("secret_token"));
         });
     }
 }

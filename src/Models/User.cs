@@ -1,11 +1,10 @@
 namespace RASharp.Models;
 
-public class GetUserProfile
-{
-    public string User { get; set; }
+using System.Text.Json.Serialization;
 
-    public GetUserProfile()
-    {
-        this.User = "";
-    }
+public record GetUserProfile
+{
+    [JsonPropertyName("User")]
+    public required string User { get; set; }
+
 }
