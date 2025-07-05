@@ -5,11 +5,11 @@ test:
 	dotnet test
 
 doc-gen:
-	rm -rf docs/RASharp/api
-	rm -rf docs/RASharp/_site
-	docfx docs/RASharp/docfx.json
+	rm -rf docs/api
+	rm -rf docs/_site
+	docfx docs/docfx.json
 
 doc:
-	rm -rf docs/RASharp/api
-	rm -rf docs/RASharp/_site
-	docfx docs/RASharp/docfx.json --serve
+	rm -rf docs/api
+	rm -rf docs/_site
+	docfx docs/docfx.json --serve
