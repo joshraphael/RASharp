@@ -13,3 +13,5 @@
 lib
 /Tests/Regressions
 **/launchSettings.json
+/docs/RASharp/_site
+/docs/RASharp/api
