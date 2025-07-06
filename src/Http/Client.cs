@@ -14,8 +14,7 @@ public class Client(HttpClient client, string host, string userAgent, string tok
     {
         Request request = new Request()
             .Host(this._host)
-            .UserAgent(this._userAgent)
-            .Y(this._token);
+            .UserAgent(this._userAgent);
         return request;
     }
 

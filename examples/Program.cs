@@ -6,7 +6,16 @@ public class Playground
     {
         var token = Environment.GetEnvironmentVariable("RA_API_KEY") ?? "";
         var raClient = new RetroAchievements(RetroAchievements.RetroAchievementsHost, token);
-        var userProfile = await raClient.GetUserProfile("joshraphael");
-        Console.WriteLine(userProfile?.User);
+        try
+        {
+            var userProfile = await raClient.GetCodeNotes(4111);
+            Console.WriteLine(userProfile?.CodeNotes[0]);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Call failed");
+            Console.WriteLine(e);
+
+        }
     }
 }
