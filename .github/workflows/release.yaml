@@ -26,3 +26,4 @@ jobs:
         run: |
           dotnet pack src/RASharp.csproj -p:PackageVersion=${VERSION} --configuration Release
           dotnet nuget push src/bin/Release/*.nupkg -k ${{ secrets.NUGET_KEY }} -s https://api.nuget.org/v3/index.json
+          dotnet nuget push src/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
